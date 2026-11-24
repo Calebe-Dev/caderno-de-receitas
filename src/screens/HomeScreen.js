@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import CategoryTile from '../components/CategoryTile';
+import GlossyButton from '../components/GlossyButton';
+import InsetField from '../components/InsetField';
 import LeatherHeader from '../components/LeatherHeader';
 import PaperCard from '../components/PaperCard';
 import ScreenContainer from '../components/ScreenContainer';
 import StatusMessage from '../components/StatusMessage';
 import useApi from '../hooks/useApi';
-import { getCategories } from '../services/mealApi';
+import { getCategories, getRandomMeal } from '../services/mealApi';
 import { colors, fonts, layout } from '../theme';
 import { translateCategory } from '../utils/translations';
 
@@ -20,12 +23,29 @@ function columnsFor(width) {
 export default function HomeScreen({ navigation }) {
   const { width } = useWindowDimensions();
   const { data: categories, loading, error, reload } = useApi(getCategories);
+  const [term, setTerm] = useState('');
+  const [drawing, setDrawing] = useState(false);
 
   const columns = columnsFor(width);
   const tileWidth = `${100 / columns}%`;
 
   const openCategory = (category) =>
     navigation.navigate('Category', { category: category.name });
+
+  const search = () => {
+    if (term.trim()) navigation.navigate('Search', { term: term.trim() });
+  };
+
+  // Sorteia uma receita qualquer da API e abre a ficha dela.
+  const surprise = async () => {
+    setDrawing(true);
+    try {
+      const meal = await getRandomMeal();
+      if (meal) navigation.navigate('Recipe', { id: meal.id, name: meal.name });
+    } finally {
+      setDrawing(false);
+    }
+  };
 
   return (
     <ScreenContainer
@@ -34,9 +54,33 @@ export default function HomeScreen({ navigation }) {
       <PaperCard style={styles.intro}>
         <Text style={styles.introTitle}>Bem-vindo à cozinha!</Text>
         <Text style={styles.introText}>
-          Escolha uma categoria no mural abaixo para ver as receitas.
+          Procure um prato pelo nome ou escolha uma categoria no mural abaixo.
         </Text>
       </PaperCard>
+
+      <InsetField
+        value={term}
+        onChangeText={setTerm}
+        onSubmit={search}
+        placeholder="Buscar receita (ex.: chicken)"
+      />
+
+      <View style={styles.actions}>
+        <GlossyButton
+          title="Buscar"
+          icon="search"
+          variant="leather"
+          onPress={search}
+          style={styles.searchAction}
+        />
+        <GlossyButton
+          title={drawing ? 'Sorteando...' : 'Receita surpresa'}
+          icon="shuffle"
+          onPress={surprise}
+          disabled={drawing}
+          style={styles.surpriseAction}
+        />
+      </View>
 
       <Text style={styles.sectionTitle}>Categorias</Text>
 
@@ -82,6 +126,21 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: colors.ink,
     marginTop: 4,
+  },
+  actions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginTop: 12,
+    marginBottom: layout.gutter,
+  },
+  searchAction: {
+    flexGrow: 1,
+    flexBasis: 110,
+  },
+  surpriseAction: {
+    flexGrow: 1.6,
+    flexBasis: 190,
   },
   sectionTitle: {
     fontFamily: fonts.titleItalic,

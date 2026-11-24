@@ -47,6 +47,7 @@ export default function GlossyButton({ title, icon, onPress, variant = 'green', 
           {!pressed ? <View style={styles.gloss} pointerEvents="none" /> : null}
           {icon ? <Ionicons name={icon} size={18} color={palette.text} style={styles.icon} /> : null}
           <Text
+            numberOfLines={1}
             style={[
               styles.text,
               { color: palette.text },
@@ -71,11 +72,12 @@ const styles = StyleSheet.create({
     transform: [{ translateY: 2 }],
   },
   fill: {
+    flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 18,
+    paddingHorizontal: 14,
   },
   gloss: {
     position: 'absolute',
@@ -91,8 +93,9 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   text: {
+    flexShrink: 1,
     fontFamily: fonts.title,
-    fontSize: 16,
+    fontSize: 15,
     letterSpacing: 0.3,
   },
   brassText: {

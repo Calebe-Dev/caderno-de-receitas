@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import CategoryScreen from '../screens/CategoryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RecipeScreen from '../screens/RecipeScreen';
+import SearchScreen from '../screens/SearchScreen';
 import { colors } from '../theme';
 
 const Stack = createNativeStackNavigator();
@@ -17,6 +18,7 @@ const linking = {
       Home: '',
       Category: 'categoria/:category',
       Recipe: 'receita/:id',
+      Search: 'busca',
     },
   },
 };
@@ -40,6 +42,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Category" component={CategoryScreen} />
         <Stack.Screen name="Recipe" component={RecipeScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
       </Stack.Navigator>
       <StatusBar style="light" />
     </NavigationContainer>
