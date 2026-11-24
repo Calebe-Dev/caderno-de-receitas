@@ -2,6 +2,8 @@
 
 Aplicativo mobile desenvolvido com **Expo + React Native** como trabalho prático da disciplina de Tópicos Especiais.
 
+**Acesse a versão web:** https://calebe-dev.github.io/caderno-de-receitas/
+
 O app consome a API pública [TheMealDB](https://www.themealdb.com/api.php) e apresenta receitas do mundo todo como se fossem um caderno de receitas antigo apoiado sobre uma mesa de madeira. O visual segue a linguagem de design **skeumorfista**: texturas e materiais do mundo real (madeira, couro costurado, papel pautado, fotos reveladas presas com fita, etiquetas de latão) com relevo, sombras e botões que afundam ao serem pressionados.
 
 ## Integrantes
@@ -128,3 +130,11 @@ npx expo start
 ```
 
 Depois, escaneie o QR Code com o Expo Go (Android) ou com a câmera (iOS). Também é possível pressionar `a` para abrir no emulador Android, `i` para o simulador iOS ou `w` para abrir no navegador.
+
+### Versão web (GitHub Pages)
+
+A cada push na branch `main`, o workflow `.github/workflows/deploy.yml` gera a versão web com `npx expo export -p web` e publica em https://calebe-dev.github.io/caderno-de-receitas/. Para gerar a mesma versão localmente:
+
+```bash
+npm run build:web   # arquivos gerados na pasta dist/
+```
