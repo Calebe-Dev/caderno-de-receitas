@@ -30,13 +30,15 @@ export default function WoodBackground({ children }) {
         end={{ x: 1, y: 1 }}
         style={StyleSheet.absoluteFill}
       />
-      <View style={styles.grainLayer} pointerEvents="none">
-        {GRAIN.map((line, index) => (
-          <View
-            key={index}
-            style={[styles.grain, { top: line.top, height: line.height, opacity: 0.5 + (index % 3) * 0.2 }]}
-          />
-        ))}
+      <View style={styles.grainClip} pointerEvents="none">
+        <View style={styles.grainLayer}>
+          {GRAIN.map((line, index) => (
+            <View
+              key={index}
+              style={[styles.grain, { top: line.top, height: line.height, opacity: 0.5 + (index % 3) * 0.2 }]}
+            />
+          ))}
+        </View>
       </View>
       {children}
     </View>
@@ -47,6 +49,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.wood,
+  },
+  // Recorte separado para os veios girados não ultrapassarem a tela.
+  grainClip: {
+    ...StyleSheet.absoluteFillObject,
+    overflow: 'hidden',
   },
   grainLayer: {
     ...StyleSheet.absoluteFillObject,

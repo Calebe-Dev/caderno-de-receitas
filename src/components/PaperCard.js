@@ -13,10 +13,12 @@ export default function PaperCard({ children, ruled = false, style, contentStyle
         style={StyleSheet.absoluteFill}
       />
       {ruled ? (
-        <View style={styles.ruledLayer} pointerEvents="none">
-          {Array.from({ length: 60 }).map((_, index) => (
-            <View key={index} style={styles.line} />
-          ))}
+        <View style={styles.clip} pointerEvents="none">
+          <View style={styles.ruledLayer}>
+            {Array.from({ length: 60 }).map((_, index) => (
+              <View key={index} style={styles.line} />
+            ))}
+          </View>
           <View style={styles.margin} />
         </View>
       ) : null}
@@ -38,8 +40,16 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-  ruledLayer: {
+  // Recorte próprio para as pautas não deixarem o cartão rolável.
+  clip: {
     ...StyleSheet.absoluteFillObject,
+    overflow: 'hidden',
+  },
+  ruledLayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
     paddingTop: 52,
   },
   line: {
