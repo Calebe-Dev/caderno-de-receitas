@@ -25,10 +25,7 @@ export default function HomeScreen({ navigation }) {
   const tileWidth = `${100 / columns}%`;
 
   const openCategory = (category) =>
-    navigation.navigate('Category', {
-      category: category.name,
-      label: translateCategory(category.name),
-    });
+    navigation.navigate('Category', { category: category.name });
 
   return (
     <ScreenContainer
