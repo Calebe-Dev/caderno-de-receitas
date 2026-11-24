@@ -15,16 +15,17 @@ O app consome a API pública [TheMealDB](https://www.themealdb.com/api.php) e ap
 
 ## Telas
 
-O app tem **4 telas**:
+O app tem **5 telas**:
 
-| Início (categorias) | Receitas da categoria | Ficha da receita | Busca |
-| :-----------------: | :-------------------: | :--------------: | :---: |
-| <img src="docs/prints/home.jpg" width="200" alt="Tela inicial com o mural de categorias" /> | <img src="docs/prints/categoria.jpg" width="200" alt="Lista de receitas da categoria Sobremesas" /> | <img src="docs/prints/receita.jpg" width="200" alt="Ficha da receita com foto, etiquetas e ingredientes" /> | <img src="docs/prints/busca.jpg" width="200" alt="Busca de receitas por nome" /> |
+| Início (categorias) | Receitas da categoria | Ficha da receita | Busca | Sobre nós |
+| :-----------------: | :-------------------: | :--------------: | :---: | :-------: |
+| <img src="docs/prints/home.jpg" width="200" alt="Tela inicial com o mural de categorias" /> | <img src="docs/prints/categoria.jpg" width="200" alt="Lista de receitas da categoria Sobremesas" /> | <img src="docs/prints/receita.jpg" width="200" alt="Ficha da receita com foto, etiquetas e ingredientes" /> | <img src="docs/prints/busca.jpg" width="200" alt="Busca de receitas por nome" /> | <img src="docs/prints/sobre.jpg" width="200" alt="Tela Sobre nós com as fotos dos integrantes" /> |
 
 1. **Início** — mural com as fotos das categorias (presas com fita), campo de busca e o botão **Receita surpresa**, que sorteia uma receita aleatória.
 2. **Receitas da categoria** — fichas com foto, nome e carimbo da origem do prato, com filtro por nome dentro da categoria.
 3. **Ficha da receita** — foto grande, etiquetas de latão (categoria, origem e tags), lista de ingredientes em papel pautado com caixinhas para marcar o que já foi separado, modo de preparo numerado e botões para o vídeo no YouTube e a receita original.
 4. **Busca** — procura receitas pelo nome do prato enquanto o usuário digita.
+5. **Sobre nós** — aberta pelo botão de latão no cabeçalho da tela inicial; apresenta o app e os integrantes da dupla, com foto, função, uma breve descrição e link para o GitHub de cada um.
 
 Em telas largas (tablet e web) o conteúdo fica centralizado com largura máxima, o mural ganha mais colunas e a ficha da receita coloca foto e etiquetas lado a lado:
 
@@ -81,6 +82,7 @@ Toda a interface é montada com Flexbox do React Native:
 ├── assets/                 # Ícone e splash do app
 ├── docs/prints/            # Prints usados neste README
 └── src/
+    ├── assets/images/      # Fotos dos integrantes
     ├── components/         # Componentes reutilizáveis
     │   ├── CategoryTile.js     # Foto de categoria no mural
     │   ├── GlossyButton.js     # Botão em relevo com brilho
@@ -94,9 +96,10 @@ Toda a interface é montada com Flexbox do React Native:
     │   ├── Stamp.js            # Etiqueta de latão
     │   ├── StatusMessage.js    # Carregando, erro e lista vazia
     │   └── WoodBackground.js   # Fundo de mesa de madeira
+    ├── data/               # Dados dos integrantes (tela Sobre nós)
     ├── hooks/              # useApi (carregamento e erro das requisições)
     ├── navigation/         # Rotas (stack navigator)
-    ├── screens/            # Home, Category, Recipe e Search
+    ├── screens/            # Home, Category, Recipe, Search e About
     ├── services/           # Acesso à API TheMealDB
     ├── theme/              # Cores, fontes e sombras
     └── utils/              # Traduções de categorias e origens
