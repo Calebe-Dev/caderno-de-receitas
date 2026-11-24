@@ -6,10 +6,10 @@ O app consome a API pública [TheMealDB](https://www.themealdb.com/api.php) e ap
 
 ## Integrantes
 
-| Nome | GitHub |
-| ---- | ------ |
-| Calebe Sousa de Araujo | [@Calebe-Dev](https://github.com/Calebe-Dev) |
-| Cleiton Valemtin | [@Cleiton-code](https://github.com/Cleiton-code) |
+| Foto | Nome | GitHub |
+| :--: | ---- | ------ |
+| <img src="src/assets/images/calebe.jpg" width="90" alt="Foto de Calebe Sousa de Araujo" /> | Calebe Sousa de Araujo | [@Calebe-Dev](https://github.com/Calebe-Dev) |
+| <img src="src/assets/images/cleiton.jpg" width="90" alt="Foto de Cleiton Valemtin" /> | Cleiton Valemtin | [@Cleiton-code](https://github.com/Cleiton-code) |
 
 > **Observação:** todo o desenvolvimento foi feito pela mesma máquina, por isso os commits aparecem no nome de [@Calebe-Dev](https://github.com/Calebe-Dev).
 
@@ -26,6 +26,12 @@ O app tem **5 telas**:
 3. **Ficha da receita** — foto grande, etiquetas de latão (categoria, origem e tags), lista de ingredientes em papel pautado com caixinhas para marcar o que já foi separado, modo de preparo numerado e botões para o vídeo no YouTube e a receita original.
 4. **Busca** — procura receitas pelo nome do prato enquanto o usuário digita.
 5. **Sobre nós** — aberta pelo botão de latão no cabeçalho da tela inicial; apresenta o app e os integrantes da dupla, com foto, função, uma breve descrição e link para o GitHub de cada um.
+
+Tela **Sobre nós** com os dois integrantes:
+
+| Calebe | Cleiton |
+| :----: | :-----: |
+| <img src="docs/prints/sobre.jpg" width="200" alt="Card do Calebe na tela Sobre nós" /> | <img src="docs/prints/sobre-cleiton.jpg" width="200" alt="Card do Cleiton na tela Sobre nós" /> |
 
 Em telas largas (tablet e web) o conteúdo fica centralizado com largura máxima, o mural ganha mais colunas e a ficha da receita coloca foto e etiquetas lado a lado:
 
