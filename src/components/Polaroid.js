@@ -3,12 +3,13 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, shadows } from '../theme';
 
 // Foto revelada com borda branca, presa por um pedaço de fita adesiva.
-export default function Polaroid({ uri, caption, size = 120, tilt = 0, tape = true, style }) {
+// Aceita uma URL (uri) ou uma imagem local (source).
+export default function Polaroid({ uri, source, caption, size = 120, tilt = 0, tape = true, style }) {
   return (
     <View style={[styles.frame, shadows.floating, { transform: [{ rotate: `${tilt}deg` }] }, style]}>
       {tape ? <View style={styles.tape} /> : null}
       <Image
-        source={{ uri }}
+        source={source || { uri }}
         style={[styles.image, typeof size === 'number' ? { width: size, height: size } : styles.fluid]}
         resizeMode="cover"
       />

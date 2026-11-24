@@ -2,6 +2,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
+import AboutScreen from '../screens/AboutScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RecipeScreen from '../screens/RecipeScreen';
@@ -19,6 +20,7 @@ const linking = {
       Category: 'categoria/:category',
       Recipe: 'receita/:id',
       Search: 'busca',
+      About: 'sobre',
     },
   },
 };
@@ -43,6 +45,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Category" component={CategoryScreen} />
         <Stack.Screen name="Recipe" component={RecipeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Navigator>
       <StatusBar style="light" />
     </NavigationContainer>

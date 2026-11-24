@@ -4,7 +4,7 @@ import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import CategoryTile from '../components/CategoryTile';
 import GlossyButton from '../components/GlossyButton';
 import InsetField from '../components/InsetField';
-import LeatherHeader from '../components/LeatherHeader';
+import LeatherHeader, { BrassButton } from '../components/LeatherHeader';
 import PaperCard from '../components/PaperCard';
 import ScreenContainer from '../components/ScreenContainer';
 import StatusMessage from '../components/StatusMessage';
@@ -49,7 +49,15 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <ScreenContainer
-      header={<LeatherHeader title="Caderno de Receitas" subtitle="sabores do mundo todo" />}
+      header={
+        <LeatherHeader
+          title="Caderno de Receitas"
+          subtitle="sabores do mundo todo"
+          right={
+            <BrassButton icon="people" label="Sobre nós" onPress={() => navigation.navigate('About')} />
+          }
+        />
+      }
     >
       <PaperCard style={styles.intro}>
         <Text style={styles.introTitle}>Bem-vindo à cozinha!</Text>
