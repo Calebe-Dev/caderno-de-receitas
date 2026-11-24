@@ -11,16 +11,21 @@ import { colors } from '../theme';
 
 const Stack = createNativeStackNavigator();
 
+// Na versão web o app fica publicado em uma subpasta (GitHub Pages),
+// então todos os caminhos começam pelo baseUrl definido no app.json.
+const base = (process.env.EXPO_BASE_URL || '').replace(/^\/+|\/+$/g, '');
+const withBase = (path) => [base, path].filter(Boolean).join('/');
+
 // Caminhos usados na versão web (ex.: /categoria/Dessert).
 const linking = {
   prefixes: [],
   config: {
     screens: {
-      Home: '',
-      Category: 'categoria/:category',
-      Recipe: 'receita/:id',
-      Search: 'busca',
-      About: 'sobre',
+      Home: withBase(''),
+      Category: withBase('categoria/:category'),
+      Recipe: withBase('receita/:id'),
+      Search: withBase('busca'),
+      About: withBase('sobre'),
     },
   },
 };
